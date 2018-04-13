@@ -33,6 +33,8 @@
 		83C6A2792081032100B24679 /* HTTPURLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A2782081032100B24679 /* HTTPURLResponse+Extension.swift */; };
 		83C6A27B208106FC00B24679 /* TCDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A27A208106FC00B24679 /* TCDesign.swift */; };
 		83C6A27D20812B9600B24679 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A27C20812B9600B24679 /* UIView+Extension.swift */; };
+		83C6A2812081303800B24679 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A27F2081303800B24679 /* LoadingCell.swift */; };
+		83C6A2822081303800B24679 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C6A2802081303800B24679 /* LoadingCell.xib */; };
 		8CDCC7059F15942262CF0D35 /* Pods_Technical_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C5ED78A99A5CC92C0786A /* Pods_Technical_Challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		83C6A2782081032100B24679 /* HTTPURLResponse+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Extension.swift"; sourceTree = "<group>"; };
 		83C6A27A208106FC00B24679 /* TCDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCDesign.swift; sourceTree = "<group>"; };
 		83C6A27C20812B9600B24679 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		83C6A27F2081303800B24679 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		83C6A2802081303800B24679 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		C67D8A93D1596675B8A39AB9 /* Pods_Technical_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technical_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89C5ED78A99A5CC92C0786A /* Pods_Technical_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technical_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF465FF259F1CE6EF1619B06 /* Pods_Technical_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technical_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +215,7 @@
 		83AF2354207F949A0043A898 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				83C6A27E2081302100B24679 /* LoadingCell */,
 				83C6A26F2080EB6A00B24679 /* RepositoryCell */,
 			);
 			path = Views;
@@ -310,6 +315,15 @@
 				83C6A2712080EB9C00B24679 /* RepositoryCell.xib */,
 			);
 			path = RepositoryCell;
+			sourceTree = "<group>";
+		};
+		83C6A27E2081302100B24679 /* LoadingCell */ = {
+			isa = PBXGroup;
+			children = (
+				83C6A27F2081303800B24679 /* LoadingCell.swift */,
+				83C6A2802081303800B24679 /* LoadingCell.xib */,
+			);
+			path = LoadingCell;
 			sourceTree = "<group>";
 		};
 		8FCCBAA0E52319261A95DDB8 /* Frameworks */ = {
@@ -438,6 +452,7 @@
 				83AF232E207F94110043A898 /* LaunchScreen.storyboard in Resources */,
 				83AF232B207F94110043A898 /* Assets.xcassets in Resources */,
 				83AF2329207F94100043A898 /* Main.storyboard in Resources */,
+				83C6A2822081303800B24679 /* LoadingCell.xib in Resources */,
 				83C6A2732080EB9C00B24679 /* RepositoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,6 +658,7 @@
 				83C6A26E2080EB5200B24679 /* UITableview+Extensions.swift in Sources */,
 				83C6A2752080EED300B24679 /* RepositoryCellModel.swift in Sources */,
 				83C6A2772080F5C700B24679 /* PaginatedResponse.swift in Sources */,
+				83C6A2812081303800B24679 /* LoadingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.register(RepositoryCell.self)
+        resultTableView.register(LoadingCell.self)
         
         // Removes empty cells
         resultTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -48,7 +49,7 @@ class MainViewController: UIViewController {
         guard let searchText = searchBar.text else {
             return
         }
-        viewModel.userDidTap(searchText)
+        viewModel.userDidRefresh(with: searchText)
     }
 }
 
@@ -66,6 +67,7 @@ extension MainViewController : MainViewModelDelegate {
         case .insert(let indexPaths):
             self.resultTableView.beginUpdates()
             self.resultTableView.insertRows(at: indexPaths, with: .automatic)
+            self.resultTableView.reloadSections([1], with: .automatic)
             self.resultTableView.endUpdates()
         }
     }
@@ -75,8 +77,10 @@ extension MainViewController : MainViewModelDelegate {
         case .idle:
             self.activityIndicator.stopAnimating()
             self.resultTableView.refreshControl?.endRefreshing()
-        case .refreshing:
+        case .fetchingFirstPage:
             self.activityIndicator.startAnimating()
+        case .refreshing:
+            self.activityIndicator.stopAnimating()
         default:
             break
         }
@@ -85,18 +89,36 @@ extension MainViewController : MainViewModelDelegate {
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.totalRepositories
+        if section == 0 {
+            return viewModel.totalRepositories
+        } else {
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            guard let searchText = searchBar.text else {
+                return
+            }
+            self.viewModel.fetchNextRepositories(with: searchText)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : RepositoryCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        let model = viewModel.repositoryCellModel(at: indexPath)
-        cell.configure(model: model)
-        return cell
+        if indexPath.section == 0 {
+            let cell : RepositoryCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let model = viewModel.repositoryCellModel(at: indexPath)
+            cell.configure(model: model)
+            return cell
+        } else {
+            let loadingCell: LoadingCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            return loadingCell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

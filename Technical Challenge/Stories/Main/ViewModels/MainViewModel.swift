@@ -17,6 +17,7 @@ enum MainEvent {
 enum MainStatus {
     case idle
     case refreshing
+    case fetchingFirstPage
     case fetchingNextPage
 }
 
@@ -46,9 +47,7 @@ final class MainViewModel {
         }
     }
     
-    func fetchNextRepositories(with filter: String) {
-        
-        currentQuery?.cancel()
+    func fetchNextRepositories(with searchText: String) {
         
         if let nextLink = lastResponse?.nextLinkURL {
             self.loadingStatus = .fetchingNextPage
@@ -62,10 +61,8 @@ final class MainViewModel {
                 self.loadingStatus = .idle
             })
         } else {
-            self.loadedRepositories.removeAll()
-            self.delegate?.mainViewModel(viewModel: self, didSend: .update)
-            self.loadingStatus = .refreshing
-            currentQuery = NetworkManager.default.fetchRepositories(filter: filter, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
+            self.loadingStatus = .fetchingFirstPage
+            currentQuery = NetworkManager.default.fetchRepositories(search: searchText, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
                 self.lastResponse = response
                 self.loadedRepositories = response.items
                 self.delegate?.mainViewModel(viewModel: self, didSend: .update)
@@ -75,6 +72,22 @@ final class MainViewModel {
                 self.loadingStatus = .idle
             })
         }
+    }
+    
+    func userDidRefresh(with searchText: String) {
+        
+        currentQuery?.cancel()
+        
+        self.loadingStatus = .refreshing
+        currentQuery = NetworkManager.default.fetchRepositories(search: searchText, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
+            self.lastResponse = response
+            self.loadedRepositories = response.items
+            self.delegate?.mainViewModel(viewModel: self, didSend: .update)
+            self.loadingStatus = .idle
+        }, failureHandler: { error in
+            print(error.message)
+            self.loadingStatus = .idle
+        })
     }
     
     func userDidTap(_ searchText: String) {
@@ -89,6 +102,8 @@ final class MainViewModel {
                 self.fetchNextRepositories(with: searchText)
             }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: searchTask!)
+        } else {
+            self.loadingStatus = .idle
         }
     }
     

@@ -29,7 +29,7 @@ enum Router {
     
     static let baseURLString = Bundle.main.infoDictionary!["Github_base_url"] as! String
     
-    case searchRepositories(filter: String, sortedType: RepoSortType, order: RepoOrderType)
+    case searchRepositories(search: String, sortedType: RepoSortType, order: RepoOrderType)
     
     var method : HTTPMethod {
         switch self {

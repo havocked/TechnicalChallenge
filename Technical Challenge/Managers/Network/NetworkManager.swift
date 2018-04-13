@@ -71,8 +71,8 @@ extension NetworkManager : NetworkRessource {
         return self.callRequest(request: request, withSuccess: completionHandler, andFailure: failureHandler)
     }
     
-    func fetchRepositories(filter: String, sorted: RepoSortType = .forks, order: RepoOrderType = .desc, completionHandler: @escaping (PaginatedResponse<Repository>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
-        let request = Router.searchRepositories(filter: filter, sortedType: sorted, order: order).asURLRequest()
+    func fetchRepositories(search: String, sorted: RepoSortType = .forks, order: RepoOrderType = .desc, completionHandler: @escaping (PaginatedResponse<Repository>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
+        let request = Router.searchRepositories(search: search, sortedType: sorted, order: order).asURLRequest()
         return self.callRequest(request: request, withSuccess: completionHandler, andFailure: failureHandler)
     }
 }
