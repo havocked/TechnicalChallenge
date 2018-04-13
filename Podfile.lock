@@ -1,0 +1,24 @@
+PODS:
+  - Kingfisher (4.6.4)
+  - WebLinking (2.0.0)
+
+DEPENDENCIES:
+  - Kingfisher (~> 4.0)
+  - WebLinking (from `https://github.com/akkyie/WebLinking.swift.git`)
+
+EXTERNAL SOURCES:
+  WebLinking:
+    :git: https://github.com/akkyie/WebLinking.swift.git
+
+CHECKOUT OPTIONS:
+  WebLinking:
+    :commit: 1436ddb82bb9d2dc7fe5473301edf26aa1dd80d9
+    :git: https://github.com/akkyie/WebLinking.swift.git
+
+SPEC CHECKSUMS:
+  Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
+  WebLinking: a2ffdedbc8741b6cc490a3a06b747f7b528d6b7b
+
+PODFILE CHECKSUM: d31edfa8e23b0c7d5f6e521920bf71d981a4a0c9
+
+COCOAPODS: 1.4.0

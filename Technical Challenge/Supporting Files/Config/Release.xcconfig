@@ -1,0 +1,13 @@
+//
+//  Release.xcconfig
+//  Technical Challenge
+//
+//  Created by Nataniel Martin on 12/04/2018.
+//  Copyright © 2018 Nataniel Martin. All rights reserved.
+//
+
+#include "Pods/Target Support Files/Pods-Technical Challenge/Pods-Technical Challenge.release.xcconfig"
+#include "Pods/Target Support Files/Pods-Technical ChallengeTests/Pods-Technical ChallengeTests.release.xcconfig"
+#include "Pods/Target Support Files/Pods-Technical ChallengeUITests/Pods-Technical ChallengeUITests.release.xcconfig"
+
+BASE_URL = api.github.com
