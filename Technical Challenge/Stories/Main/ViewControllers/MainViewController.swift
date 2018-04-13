@@ -23,6 +23,18 @@ class MainViewController: UIViewController {
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.register(RepositoryCell.self)
+        
+        // Add refresh control to TableView
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+        resultTableView.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshAction() {
+        guard let searchText = searchBar.text else {
+            return
+        }
+        viewModel.userDidTap(searchText)
     }
 }
 
@@ -38,6 +50,10 @@ extension MainViewController : MainViewModelDelegate {
         case .update:
             self.resultTableView.reloadData()
         }
+    }
+    
+    func mainViewModelDidStopRefreshing(viewModel: MainViewModel) {
+        resultTableView.refreshControl?.endRefreshing()
     }
 }
 

@@ -14,6 +14,7 @@ enum MainEvent {
 }
 
 protocol MainViewModelDelegate: class {
+    func mainViewModelDidStopRefreshing(viewModel: MainViewModel)
     func mainViewModel(viewModel: MainViewModel, didSend event: MainEvent)
 }
 
@@ -41,16 +42,20 @@ final class MainViewModel {
                 self.lastResponse = response
                 self.loadedRepositories.append(contentsOf: response.items)
                 self.delegate?.mainViewModel(viewModel: self, didSend: .update)
+                self.delegate?.mainViewModelDidStopRefreshing(viewModel: self)
             }, failureHandler: { error in
                 print(error.message)
+                self.delegate?.mainViewModelDidStopRefreshing(viewModel: self)
             })
         } else {
             currentQuery = NetworkManager.default.fetchRepositories(filter: filter, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
                 self.lastResponse = response
                 self.loadedRepositories = response.items
                 self.delegate?.mainViewModel(viewModel: self, didSend: .update)
+                self.delegate?.mainViewModelDidStopRefreshing(viewModel: self)
             }, failureHandler: { error in
                 print(error.message)
+                self.delegate?.mainViewModelDidStopRefreshing(viewModel: self)
             })
         }
     }

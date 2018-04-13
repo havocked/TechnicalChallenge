@@ -7,15 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 struct RepositoryCellModel {
     var title : String
     var description : String
     var fork : String
+    var avatarURL : URL?
+    var avatarPlaceholderImage = #imageLiteral(resourceName: "avatar_placeholder")
     
     init(repository: Repository) {
         title = repository.name
         description = repository.description ?? "No description"
         fork = "\(repository.forks) \(repository.forks > 1 ? "forks" : "fork")"
+        avatarURL = URL(string: repository.owner.avatarURL)
     }
 }

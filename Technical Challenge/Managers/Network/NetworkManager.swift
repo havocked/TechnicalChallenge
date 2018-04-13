@@ -31,8 +31,10 @@ struct NetworkManager {
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                let customError = TCError.error(error)
-                failure(customError)
+                DispatchQueue.main.async {
+                    let customError = TCError.error(error)
+                    failure(customError)
+                }
             } else {
                 let decoder = JSONDecoder()
                 if let data = data, let httpResponse = response as? HTTPURLResponse {
@@ -45,12 +47,16 @@ struct NetworkManager {
                             success(decodedResponse)
                         }
                     } else {
-                        let error = TCError.message(title: "Error API", message: "Error API")
-                        failure(error)
+                        DispatchQueue.main.async {
+                            let error = TCError.message(title: "Error API", message: "Error API")
+                            failure(error)
+                        }
                     }
                 } else {
-                    let error = TCError.message(title: "Error decoding", message: "Failed to decode object")
-                    failure(error)
+                    DispatchQueue.main.async {
+                        let error = TCError.message(title: "Error decoding", message: "Failed to decode object")
+                        failure(error)
+                    }
                 }
             }
         }
