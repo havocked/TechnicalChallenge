@@ -19,7 +19,16 @@ struct RepositoryCellModel {
     init(repository: Repository) {
         title = repository.name
         description = repository.description ?? "No description"
-        fork = "\(repository.forks) \(repository.forks > 1 ? "forks" : "fork")"
+        
+        switch repository.forks {
+        case 0:
+            fork = "No forks"
+        case 1:
+            fork = "1 fork"
+        default:
+            fork = "\(repository.forks) forks"
+        }
+        
         avatarURL = URL(string: repository.owner.avatarURL)
     }
 }

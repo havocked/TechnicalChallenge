@@ -15,14 +15,28 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultTableView: UITableView!
     
+    private var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
+        self.view.addSubview(activityIndicator)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        let centerXContraint = NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: resultTableView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let centerYConstraint = NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: resultTableView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        view.addConstraints([centerXContraint, centerYConstraint])
         
         viewModel.delegate = self
         searchBar.delegate = self
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.register(RepositoryCell.self)
+        
+        // Removes empty cells
+        resultTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // Add refresh control to TableView
         let refreshControl = UIRefreshControl()
@@ -49,11 +63,23 @@ extension MainViewController : MainViewModelDelegate {
         switch event {
         case .update:
             self.resultTableView.reloadData()
+        case .insert(let indexPaths):
+            self.resultTableView.beginUpdates()
+            self.resultTableView.insertRows(at: indexPaths, with: .automatic)
+            self.resultTableView.endUpdates()
         }
     }
     
-    func mainViewModelDidStopRefreshing(viewModel: MainViewModel) {
-        resultTableView.refreshControl?.endRefreshing()
+    func mainViewModel(viewModel: MainViewModel, didChange status: MainStatus) {
+        switch status {
+        case .idle:
+            self.activityIndicator.stopAnimating()
+            self.resultTableView.refreshControl?.endRefreshing()
+        case .refreshing:
+            self.activityIndicator.startAnimating()
+        default:
+            break
+        }
     }
 }
 

@@ -32,6 +32,7 @@
 		83C6A2772080F5C700B24679 /* PaginatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A2762080F5C700B24679 /* PaginatedResponse.swift */; };
 		83C6A2792081032100B24679 /* HTTPURLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A2782081032100B24679 /* HTTPURLResponse+Extension.swift */; };
 		83C6A27B208106FC00B24679 /* TCDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A27A208106FC00B24679 /* TCDesign.swift */; };
+		83C6A27D20812B9600B24679 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6A27C20812B9600B24679 /* UIView+Extension.swift */; };
 		8CDCC7059F15942262CF0D35 /* Pods_Technical_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C5ED78A99A5CC92C0786A /* Pods_Technical_Challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		83C6A2762080F5C700B24679 /* PaginatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResponse.swift; sourceTree = "<group>"; };
 		83C6A2782081032100B24679 /* HTTPURLResponse+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Extension.swift"; sourceTree = "<group>"; };
 		83C6A27A208106FC00B24679 /* TCDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCDesign.swift; sourceTree = "<group>"; };
+		83C6A27C20812B9600B24679 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C67D8A93D1596675B8A39AB9 /* Pods_Technical_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technical_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89C5ED78A99A5CC92C0786A /* Pods_Technical_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technical_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF465FF259F1CE6EF1619B06 /* Pods_Technical_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technical_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,6 +298,7 @@
 				83AF2366207F96030043A898 /* String+Extension.swift */,
 				83C6A26D2080EB5200B24679 /* UITableview+Extensions.swift */,
 				83C6A2782081032100B24679 /* HTTPURLResponse+Extension.swift */,
+				83C6A27C20812B9600B24679 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				83AF2322207F94100043A898 /* AppDelegate.swift in Sources */,
 				83C6A2722080EB9C00B24679 /* RepositoryCell.swift in Sources */,
 				83AF2364207F95D30043A898 /* TCError.swift in Sources */,
+				83C6A27D20812B9600B24679 /* UIView+Extension.swift in Sources */,
 				83AF236E207F9C280043A898 /* Repository.swift in Sources */,
 				83C6A26A2080E89F00B24679 /* MainViewModel.swift in Sources */,
 				83C6A26E2080EB5200B24679 /* UITableview+Extensions.swift in Sources */,
@@ -821,7 +825,10 @@
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "$(SRCROOT)/Technical Challenge/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -839,7 +846,10 @@
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "$(SRCROOT)/Technical Challenge/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -856,7 +866,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "Technical ChallengeTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -874,7 +888,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "Technical ChallengeTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -891,7 +909,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "Technical ChallengeUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-ChallengeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -908,7 +930,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "Technical ChallengeUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-ChallengeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -989,7 +1015,10 @@
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "$(SRCROOT)/Technical Challenge/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1006,7 +1035,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "Technical ChallengeTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1023,7 +1056,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
 				INFOPLIST_FILE = "Technical ChallengeUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "test.asana.Technical-ChallengeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
