@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0BE9C656EF3434F9783A0661 /* Pods_Technical_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C67D8A93D1596675B8A39AB9 /* Pods_Technical_ChallengeUITests.framework */; };
 		606DD485C99D0DBF9FBB0CC7 /* Pods_Technical_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF465FF259F1CE6EF1619B06 /* Pods_Technical_ChallengeTests.framework */; };
+		837ED5E72082428400617A31 /* LoadingCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837ED5E62082428400617A31 /* LoadingCellModel.swift */; };
 		83AF2322207F94100043A898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF2321207F94100043A898 /* AppDelegate.swift */; };
 		83AF2324207F94100043A898 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF2323207F94100043A898 /* MainViewController.swift */; };
 		83AF2329207F94100043A898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83AF2327207F94100043A898 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		837ED5E62082428400617A31 /* LoadingCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCellModel.swift; sourceTree = "<group>"; };
 		83AF231E207F94100043A898 /* Technical Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Technical Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83AF2321207F94100043A898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83AF2323207F94100043A898 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				83C6A2692080E89F00B24679 /* MainViewModel.swift */,
 				83C6A2742080EED300B24679 /* RepositoryCellModel.swift */,
+				837ED5E62082428400617A31 /* LoadingCellModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				83AF2322207F94100043A898 /* AppDelegate.swift in Sources */,
 				83C6A2722080EB9C00B24679 /* RepositoryCell.swift in Sources */,
 				83AF2364207F95D30043A898 /* TCError.swift in Sources */,
+				837ED5E72082428400617A31 /* LoadingCellModel.swift in Sources */,
 				83C6A27D20812B9600B24679 /* UIView+Extension.swift in Sources */,
 				83AF236E207F9C280043A898 /* Repository.swift in Sources */,
 				83C6A26A2080E89F00B24679 /* MainViewModel.swift in Sources */,

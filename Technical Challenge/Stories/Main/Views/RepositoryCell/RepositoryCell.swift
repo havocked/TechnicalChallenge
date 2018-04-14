@@ -25,7 +25,7 @@ class RepositoryCell: UITableViewCell, EasyRegisteredCell {
         avatarImageView.clipsToBounds = true
     }
     
-    func configure(model: RepositoryCellModel) {
+    func configure(with model: RepositoryCellModel) {
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.description
         self.forkLabel.text = model.fork

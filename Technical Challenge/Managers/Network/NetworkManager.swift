@@ -26,7 +26,7 @@ struct NetworkManager {
     
     @discardableResult
     public func callRequest<T: Codable>(request: URLRequest, withSuccess success: @escaping (PaginatedResponse<T>)->Void, andFailure failure: @escaping FailureHandler) -> URLSessionDataTask {
-        
+        print("Start REQUEST")
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -42,13 +42,14 @@ struct NetworkManager {
                         var decodedResponse = try! decoder.decode(PaginatedResponse<T>.self, from: data)
                         let nextLink = httpResponse.findLink(relation: "next")
                         let previousLink = httpResponse.findLink(relation: "prev")
-                        decodedResponse.setLinks(previous: nextLink?.uri, next: previousLink?.uri)
+                        decodedResponse.setLinks(previous: previousLink?.uri, next: nextLink?.uri)
                         DispatchQueue.main.async {
                             success(decodedResponse)
                         }
                     } else {
+                        
                         DispatchQueue.main.async {
-                            let error = TCError.message(title: "Error API", message: "Error API")
+                            let error = TCError.message(title: "Error API", message: "\(httpResponse)")
                             failure(error)
                         }
                     }

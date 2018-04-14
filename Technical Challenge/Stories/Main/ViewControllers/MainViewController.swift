@@ -20,14 +20,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = viewModel.viewControllerTitle
+        
         activityIndicator.hidesWhenStopped = true
         activityIndicator.stopAnimating()
         self.view.addSubview(activityIndicator)
         
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        let centerXContraint = NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: resultTableView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-        let centerYConstraint = NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: resultTableView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        view.addConstraints([centerXContraint, centerYConstraint])
+        activityIndicator.bindWithCenterOfViewBounds(otherView: resultTableView)
         
         viewModel.delegate = self
         searchBar.delegate = self
@@ -35,6 +34,7 @@ class MainViewController: UIViewController {
         resultTableView.dataSource = self
         resultTableView.register(RepositoryCell.self)
         resultTableView.register(LoadingCell.self)
+        resultTableView.keyboardDismissMode = .interactive
         
         // Removes empty cells
         resultTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -43,6 +43,34 @@ class MainViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
         resultTableView.refreshControl = refreshControl
+        
+        registerKeyboardNotifications()
+    }
+    
+    deinit {
+        removeKeyboardNotifications()
+    }
+    
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(animateWithKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func animateWithKeyboard(_ notification: NSNotification) {
+        
+        let userInfo = notification.userInfo!
+        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        let moveUp = (notification.name == .UIKeyboardWillShow)
+        
+        if moveUp {
+            resultTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
+        } else {
+            resultTableView.contentInset = UIEdgeInsets.zero
+        }
     }
     
     @objc private func refreshAction() {
@@ -82,7 +110,7 @@ extension MainViewController : MainViewModelDelegate {
         case .refreshing:
             self.activityIndicator.stopAnimating()
         default:
-            break
+            return
         }
     }
 }
@@ -96,16 +124,11 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return viewModel.totalRepositories
         } else {
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            guard let searchText = searchBar.text else {
-                return
+            if viewModel.totalRepositories > 0 {
+                return 1
+            } else {
+                return 0
             }
-            self.viewModel.fetchNextRepositories(with: searchText)
         }
     }
     
@@ -113,10 +136,15 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell : RepositoryCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             let model = viewModel.repositoryCellModel(at: indexPath)
-            cell.configure(model: model)
+            cell.configure(with: model)
             return cell
         } else {
+            
+            self.viewModel.fetchNextRepositories(with: searchBar.text)
+            
             let loadingCell: LoadingCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let model = viewModel.loadingCellModel()
+            loadingCell.configure(with: model)
             return loadingCell
         }
     }

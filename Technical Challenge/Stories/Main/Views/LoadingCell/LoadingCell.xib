@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,22 +19,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="84.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-uh-Tkm">
-                        <rect key="frame" x="26" y="21" width="268" height="43"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eeQ-dv-gKF">
+                        <rect key="frame" x="10" y="30" width="300" height="24.5"/>
+                    </activityIndicatorView>
                 </subviews>
+                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="A0y-uh-Tkm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="HZz-u4-Rnn"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="A0y-uh-Tkm" secondAttribute="bottom" constant="10" id="ReO-B4-Qsv"/>
-                    <constraint firstItem="A0y-uh-Tkm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="lJp-y6-zCV"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="A0y-uh-Tkm" secondAttribute="trailing" constant="10" id="vpl-6K-sT1"/>
+                    <constraint firstItem="eeQ-dv-gKF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="58q-9P-IDL"/>
+                    <constraint firstAttribute="bottom" secondItem="eeQ-dv-gKF" secondAttribute="bottom" constant="30" id="EkZ-P1-D1d"/>
+                    <constraint firstAttribute="trailing" secondItem="eeQ-dv-gKF" secondAttribute="trailing" constant="10" id="UIe-er-deD"/>
+                    <constraint firstItem="eeQ-dv-gKF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dfo-i2-LPf"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.12549019610000001" green="0.4823529412" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activityIndicator" destination="eeQ-dv-gKF" id="AKj-J9-rgn"/>
+            </connections>
             <point key="canvasLocation" x="34" y="107.5"/>
         </tableViewCell>
     </objects>
