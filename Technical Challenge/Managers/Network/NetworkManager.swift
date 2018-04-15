@@ -11,7 +11,8 @@ import WebLinking
 
 // This protocol will allow to mock the network layer when unit test the project
 protocol NetworkRessource {
-   // func fetchImages(playlistId: Int, completionHandler: @escaping ([UIImage])->(), failure: @escaping (TGError)->())
+    func fetchRepositories(url: URL, completionHandler: @escaping (PaginatedResponse<Repository>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask
+    func fetchRepositories(search: String, sorted: RepoSortType, order: RepoOrderType, completionHandler: @escaping (PaginatedResponse<Repository>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask
 }
 
 public typealias FailureHandler = (TCError)->(Void)

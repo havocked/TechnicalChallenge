@@ -31,8 +31,9 @@ final class MainViewModel {
     private var searchTask : DispatchWorkItem?
     private var currentQuery: URLSessionDataTask?
     private var lastResponse: PaginatedResponse<Repository>?
+    private var networkManager : NetworkRessource
     
-    public private(set) var loadedRepositories = [Repository]()
+    private var loadedRepositories = [Repository]()
     public private(set) var loadingStatus : MainStatus = .idle {
         didSet {
             self.delegate?.mainViewModel(viewModel: self, didChange: loadingStatus)
@@ -47,10 +48,12 @@ final class MainViewModel {
         }
     }
     
-    var viewControllerTitle : String {
-        get {
-            return "Technical Challenge"
-        }
+    init(networkRessource: NetworkRessource = NetworkManager()) {
+//        // Use Mock response when UI testing
+//        if let _ = ProcessInfo.processInfo.environment["-ShouldMockResponse"] {
+//            networkManager = NetworkMockTest()
+//        }
+        networkManager = networkRessource
     }
     
     func verifySearchText(str: String?) -> String? {
@@ -74,7 +77,7 @@ final class MainViewModel {
             
             if self.loadingStatus != .fetchingNextPage {
                 self.loadingStatus = .fetchingNextPage
-                currentQuery = NetworkManager.default.fetchRepositories(url: nextLink, completionHandler: { (response : PaginatedResponse<Repository>) in
+                currentQuery = networkManager.fetchRepositories(url: nextLink, completionHandler: { (response : PaginatedResponse<Repository>) in
                     self.lastResponse = response
                     self.loadedRepositories.append(contentsOf: response.items)
                     self.delegate?.mainViewModel(viewModel: self, didSend: .update)
@@ -86,7 +89,7 @@ final class MainViewModel {
             }
         } else {
             self.loadingStatus = .fetchingFirstPage
-            currentQuery = NetworkManager.default.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
+            currentQuery = networkManager.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
                 self.lastResponse = response
                 self.loadedRepositories = response.items
                 self.delegate?.mainViewModel(viewModel: self, didSend: .update)
@@ -101,13 +104,14 @@ final class MainViewModel {
     func userDidRefresh(with searchText: String?) {
         
         guard let str = verifySearchText(str: searchText) else {
+            self.loadingStatus = .idle
             return
         }
         
         currentQuery?.cancel()
         
         self.loadingStatus = .refreshing
-        currentQuery = NetworkManager.default.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
+        currentQuery = networkManager.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
             self.lastResponse = response
             self.loadedRepositories = response.items
             self.delegate?.mainViewModel(viewModel: self, didSend: .update)
@@ -121,13 +125,18 @@ final class MainViewModel {
     func userDidTap(_ searchText: String?) {
         searchTask?.cancel()
         searchTask = DispatchWorkItem {
-            print("Start request ! [\(searchText)]")
             self.lastResponse = nil
             self.loadedRepositories.removeAll()
             self.delegate?.mainViewModel(viewModel: self, didSend: .update)
             self.fetchNextRepositories(with: searchText)
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: searchTask!)
+    }
+    
+    func userDidSelectCell(indexPath: IndexPath) -> DetailViewModel {
+        let repository = self.loadedRepositories[indexPath.row]
+        let model = DetailViewModel(repository: repository)
+        return model
     }
     
     func repositoryCellModel(at indexPath: IndexPath) -> RepositoryCellModel {

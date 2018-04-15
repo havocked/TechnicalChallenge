@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = viewModel.viewControllerTitle
+        self.title = "Technical Challenge"
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.stopAnimating()
@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
         
         viewModel.delegate = self
         searchBar.delegate = self
+        searchBar.placeholder = "Search a repository"
+        
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.register(RepositoryCell.self)
@@ -148,9 +150,12 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
             return loadingCell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repository = viewModel.loadedRepositories[indexPath.row]
-        print("Did touch repo : \(repository.fullName)")
+        let detailViewModel = viewModel.userDidSelectCell(indexPath: indexPath)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc : DetailViewController = storyboard.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
+        vc.viewModel = detailViewModel
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

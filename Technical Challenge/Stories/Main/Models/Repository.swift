@@ -16,6 +16,8 @@ struct Repository : Codable {
     var fullName : String
     var description : String?
     var forks : Int
+    var totalWatchers : Int
+    var watchersURL : URL?
     var owner : Owner
     
     enum CodingKeys : String, CodingKey {
@@ -24,6 +26,8 @@ struct Repository : Codable {
         case fullName = "full_name"
         case description
         case forks
+        case totalWatchers = "watchers_count"
+        case watchersURL = "stargazers_url"
         case owner
     }
     
@@ -34,6 +38,11 @@ struct Repository : Codable {
         fullName = try allValues.decode(String.self, forKey: .fullName)
         description = try allValues.decodeIfPresent(String.self, forKey: .description)
         forks = try allValues.decode(Int.self, forKey: .forks)
+        totalWatchers = try allValues.decode(Int.self, forKey: .totalWatchers)
+        
+        let urlString = try allValues.decode(String.self, forKey: .watchersURL)
+        watchersURL = URL(string: urlString)
+        
         owner = try allValues.decode(Owner.self, forKey: .owner)
     }
 }
