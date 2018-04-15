@@ -30,7 +30,7 @@ final class MainViewModel {
     
     private var searchTask : DispatchWorkItem?
     private var currentQuery: URLSessionDataTask?
-    private var lastResponse: PaginatedResponse<Repository>?
+    private var lastResponse: PaginatedResponse<SearchResult<Repository>>?
     private var networkManager : NetworkRessource
     
     private var loadedRepositories = [Repository]()
@@ -77,9 +77,9 @@ final class MainViewModel {
             
             if self.loadingStatus != .fetchingNextPage {
                 self.loadingStatus = .fetchingNextPage
-                currentQuery = networkManager.fetchRepositories(url: nextLink, completionHandler: { (response : PaginatedResponse<Repository>) in
+                currentQuery = networkManager.fetchRepositories(url: nextLink, completionHandler: { (response : PaginatedResponse<SearchResult<Repository>>) in
                     self.lastResponse = response
-                    self.loadedRepositories.append(contentsOf: response.items)
+                    self.loadedRepositories.append(contentsOf: response.data.items)
                     self.delegate?.mainViewModel(viewModel: self, didSend: .update)
                     self.loadingStatus = .idle
                 }, failureHandler: { error in
@@ -89,9 +89,9 @@ final class MainViewModel {
             }
         } else {
             self.loadingStatus = .fetchingFirstPage
-            currentQuery = networkManager.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
+            currentQuery = networkManager.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<SearchResult<Repository>>) in
                 self.lastResponse = response
-                self.loadedRepositories = response.items
+                self.loadedRepositories = response.data.items
                 self.delegate?.mainViewModel(viewModel: self, didSend: .update)
                 self.loadingStatus = .idle
             }, failureHandler: { error in
@@ -111,9 +111,9 @@ final class MainViewModel {
         currentQuery?.cancel()
         
         self.loadingStatus = .refreshing
-        currentQuery = networkManager.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<Repository>) in
+        currentQuery = networkManager.fetchRepositories(search: str, sorted: .forks, order: .desc, completionHandler: { (response : PaginatedResponse<SearchResult<Repository>>) in
             self.lastResponse = response
-            self.loadedRepositories = response.items
+            self.loadedRepositories = response.data.items
             self.delegate?.mainViewModel(viewModel: self, didSend: .update)
             self.loadingStatus = .idle
         }, failureHandler: { error in

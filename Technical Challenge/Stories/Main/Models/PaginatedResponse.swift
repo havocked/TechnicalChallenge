@@ -8,10 +8,8 @@
 
 import Foundation
 
-struct PaginatedResponse<T : Codable> : Codable {
-    var totalCount : Int
-    var isResultIncomplete : Bool
-    var items : [T]
+struct PaginatedResponse<T : Codable> {
+    var data : T
     
     private var previousLink : String?
     private var nextLink : String?
@@ -56,21 +54,9 @@ struct PaginatedResponse<T : Codable> : Codable {
         }
     }
     
-    enum CodingKeys : String, CodingKey {
-        case totalCount = "total_count"
-        case isResultIncomplete = "incomplete_results"
-        case items
-    }
-    
-    init(from decoder: Decoder) throws {
-        let allValues = try decoder.container(keyedBy: CodingKeys.self)
-        totalCount = try allValues.decode(Int.self, forKey: .totalCount)
-        isResultIncomplete = try allValues.decode(Bool.self, forKey: .isResultIncomplete)
-        items = try allValues.decode([T].self, forKey: .items)
-    }
-    
-    mutating func setLinks(previous: String?, next: String?) {
-        self.previousLink = previous
-        self.nextLink = next
+    init(data _data: T, previousLink _previousLink: String?, nextLink _nextLink: String?) {
+        data = _data
+        previousLink = _previousLink
+        nextLink = _nextLink
     }
 }

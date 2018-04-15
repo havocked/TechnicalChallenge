@@ -22,7 +22,11 @@ class SubscriberCell: UICollectionViewCell, EasyRegisteredCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.height / 2
+        //self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.height / 2
+    }
+    
+    func configure(with model: SubscriberCellModel) {
+        self.avatarImageView.kf.setImage(with: model.avatarURL, placeholder: model.avatarPlaceholderImage)
     }
     
 }

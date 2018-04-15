@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
         resultTableView.dataSource = self
         resultTableView.register(RepositoryCell.self)
         resultTableView.register(LoadingCell.self)
-        resultTableView.keyboardDismissMode = .interactive
+        resultTableView.keyboardDismissMode = .onDrag
         
         // Removes empty cells
         resultTableView.tableFooterView = UIView(frame: CGRect.zero)

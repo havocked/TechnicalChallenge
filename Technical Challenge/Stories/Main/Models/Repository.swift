@@ -17,8 +17,8 @@ struct Repository : Codable {
     var description : String?
     var forks : Int
     var totalWatchers : Int
-    var watchersURL : URL?
-    var owner : Owner
+    var watchersURL : URL
+    var owner : User
     
     enum CodingKeys : String, CodingKey {
         case id
@@ -41,8 +41,8 @@ struct Repository : Codable {
         totalWatchers = try allValues.decode(Int.self, forKey: .totalWatchers)
         
         let urlString = try allValues.decode(String.self, forKey: .watchersURL)
-        watchersURL = URL(string: urlString)
+        watchersURL = URL(string: urlString)!
         
-        owner = try allValues.decode(Owner.self, forKey: .owner)
+        owner = try allValues.decode(User.self, forKey: .owner)
     }
 }

@@ -23,7 +23,9 @@
 		83AF2364207F95D30043A898 /* TCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF2363207F95D30043A898 /* TCError.swift */; };
 		83AF2367207F96030043A898 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF2366207F96030043A898 /* String+Extension.swift */; };
 		83AF236E207F9C280043A898 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF236D207F9C280043A898 /* Repository.swift */; };
-		83AF2370207F9C4C0043A898 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF236F207F9C4C0043A898 /* Owner.swift */; };
+		83AF2370207F9C4C0043A898 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF236F207F9C4C0043A898 /* User.swift */; };
+		83B092DC2083B41F005D4C2A /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092DB2083B41F005D4C2A /* SearchResult.swift */; };
+		83B092DE2083BC80005D4C2A /* SubscriberCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092DD2083BC80005D4C2A /* SubscriberCellModel.swift */; };
 		83C57E4720836F00000660F8 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 83C57E4620836F00000660F8 /* repositories.json */; };
 		83C57E4820836F1F000660F8 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 83C57E4620836F00000660F8 /* repositories.json */; };
 		83C57E4A208377CB000660F8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C57E49208377CB000660F8 /* DetailViewController.swift */; };
@@ -88,7 +90,9 @@
 		83AF236B207F9B7D0043A898 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		83AF236C207F9B890043A898 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		83AF236D207F9C280043A898 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		83AF236F207F9C4C0043A898 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		83AF236F207F9C4C0043A898 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		83B092DB2083B41F005D4C2A /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		83B092DD2083BC80005D4C2A /* SubscriberCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberCellModel.swift; sourceTree = "<group>"; };
 		83C57E4620836F00000660F8 /* repositories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
 		83C57E49208377CB000660F8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83C57E4B2083786B000660F8 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -233,7 +237,8 @@
 			children = (
 				83C6A2762080F5C700B24679 /* PaginatedResponse.swift */,
 				83AF236D207F9C280043A898 /* Repository.swift */,
-				83AF236F207F9C4C0043A898 /* Owner.swift */,
+				83AF236F207F9C4C0043A898 /* User.swift */,
+				83B092DB2083B41F005D4C2A /* SearchResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				83C6A2742080EED300B24679 /* RepositoryCellModel.swift */,
 				837ED5E62082428400617A31 /* LoadingCellModel.swift */,
 				83C57E4B2083786B000660F8 /* DetailViewModel.swift */,
+				83B092DD2083BC80005D4C2A /* SubscriberCellModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -688,7 +694,7 @@
 				83AF2360207F95560043A898 /* Router.swift in Sources */,
 				83AF2367207F96030043A898 /* String+Extension.swift in Sources */,
 				83AF235E207F953E0043A898 /* NetworkManager.swift in Sources */,
-				83AF2370207F9C4C0043A898 /* Owner.swift in Sources */,
+				83AF2370207F9C4C0043A898 /* User.swift in Sources */,
 				83C6A2792081032100B24679 /* HTTPURLResponse+Extension.swift in Sources */,
 				83C57E4A208377CB000660F8 /* DetailViewController.swift in Sources */,
 				83C6A26C2080EB0D00B24679 /* ReusableView.swift in Sources */,
@@ -697,9 +703,11 @@
 				83AF2322207F94100043A898 /* AppDelegate.swift in Sources */,
 				83C57E522083AA5F000660F8 /* SubscriberCell.swift in Sources */,
 				83C57E552083AAF8000660F8 /* UICollectionView+Extension.swift in Sources */,
+				83B092DC2083B41F005D4C2A /* SearchResult.swift in Sources */,
 				83C6A2722080EB9C00B24679 /* RepositoryCell.swift in Sources */,
 				83AF2364207F95D30043A898 /* TCError.swift in Sources */,
 				837ED5E72082428400617A31 /* LoadingCellModel.swift in Sources */,
+				83B092DE2083BC80005D4C2A /* SubscriberCellModel.swift in Sources */,
 				837ED5EB208250B200617A31 /* NetworkMockTest.swift in Sources */,
 				83C57E4E2083A67C000660F8 /* NavigationController.swift in Sources */,
 				83C6A27D20812B9600B24679 /* UIView+Extension.swift in Sources */,

@@ -9,13 +9,18 @@
 import UIKit
 
 struct NetworkMockTest : NetworkRessource {
-    func fetchRepositories(url: URL, completionHandler: @escaping (PaginatedResponse<Repository>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
+    
+    func fetchSubscribers(url: URL, completionHandler: @escaping (PaginatedResponse<[User]>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
+        return URLSessionDataTask()
+    }
+    
+    func fetchRepositories(url: URL, completionHandler: @escaping (PaginatedResponse<SearchResult<Repository>>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
         
         
         return URLSessionDataTask()
     }
     
-    func fetchRepositories(search: String, sorted: RepoSortType, order: RepoOrderType, completionHandler: @escaping (PaginatedResponse<Repository>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
+    func fetchRepositories(search: String, sorted: RepoSortType, order: RepoOrderType, completionHandler: @escaping (PaginatedResponse<SearchResult<Repository>>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask {
         
         let bundle = Bundle.main
         
@@ -24,9 +29,11 @@ struct NetworkMockTest : NetworkRessource {
         }
         
         let jsonData = try! Data(contentsOf: url)
-        let response : PaginatedResponse<Repository> = try! JSONDecoder().decode(PaginatedResponse<Repository>.self, from: jsonData)
         
-        completionHandler(response)
+        let dataResponse : SearchResult<Repository> = try! JSONDecoder().decode(SearchResult<Repository>.self, from: jsonData)
+        let paginatedResponse = PaginatedResponse(data: dataResponse, previousLink: nil, nextLink: nil)
+        
+        completionHandler(paginatedResponse)
         
         return URLSessionDataTask()
     }

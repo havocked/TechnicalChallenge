@@ -20,12 +20,41 @@ class DetailViewController : UIViewController {
         
         self.title = viewModel.repoName
         
+        viewModel.delegate = self
+        
         subscriberCollectionView.delegate = self
         subscriberCollectionView.dataSource = self
         subscriberCollectionView.register(SubscriberCell.self)
         
         subscribersLabel.bigTitle()
         subscribersLabel.text = viewModel.totalSubscribers
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchNextSubscribers()
+    }
+}
+
+extension DetailViewController : DetailViewModelDelegate {
+    func detailViewModel(viewModel: DetailViewModel, didChange status: DetailStatus) {
+        switch status {
+        case .idle:
+            break
+        case .fetchingNextPage:
+            break
+        }
+    }
+    
+    func detailViewModel(viewModel: DetailViewModel, didSend event: DetailEvent) {
+        switch event {
+        case .update:
+            self.subscriberCollectionView.reloadData()
+        case .insert(let indexPaths):
+            self.subscriberCollectionView.performBatchUpdates({
+                self.subscriberCollectionView.insertItems(at: indexPaths)
+            }, completion: nil)
+        }
     }
 }
 
@@ -38,13 +67,20 @@ extension DetailViewController : UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return self.viewModel.fetchedSubscribersCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var subscriberCell : SubscriberCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        
+        let subscriberCell : SubscriberCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        let model = viewModel.subscriberCellModel(for: indexPath)
+        subscriberCell.configure(with: model)
         return subscriberCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row >= self.viewModel.fetchedSubscribersCount - 1 {
+            self.viewModel.fetchNextSubscribers()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -69,7 +105,7 @@ extension DetailViewController : UICollectionViewDelegateFlowLayout {
     // horizontally and vertically
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let range : CGFloat = 8
+        let range : CGFloat = 4
         let cellWidth : CGFloat = (collectionView.frame.width - (Constants.minimumSpacing * (range - 1)) - (Constants.collectionViewPaddingLeft + Constants.collectionViewPaddingRight)) / range
         
         return CGSize(width: cellWidth, height: cellWidth)

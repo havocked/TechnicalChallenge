@@ -1,5 +1,5 @@
 //
-//  Owner.swift
+//  User.swift
 //  Technical Challenge
 //
 //  Created by Nataniel Martin on 12/04/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Owner : Codable {
+struct User : Codable {
     var id : Int
     var login : String
     var avatarURL : String
