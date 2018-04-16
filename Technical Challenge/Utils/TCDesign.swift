@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Custom colors / fonts goes there
+
 extension UILabel {
     func bigTitle() {
         self.font = UIFont.boldSystemFont(ofSize: 18)

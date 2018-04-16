@@ -12,17 +12,28 @@ class SubscriberCell: UICollectionViewCell, EasyRegisteredCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    // Overriding the variable, force the app to redraw the corner radius of each images in cells
+    override var bounds: CGRect {
+        didSet {
+            self.layoutIfNeeded()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        avatarImageView.layer.masksToBounds = true
         avatarImageView.image = #imageLiteral(resourceName: "avatar_placeholder")
-        avatarImageView.clipsToBounds = true
         avatarImageView.contentMode = .scaleAspectFill
+        
+        avatarImageView.layer.borderColor = UIColor.white.cgColor
+        avatarImageView.layer.borderWidth = 2.0
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        //self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.height / 2
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
+        
     }
     
     func configure(with model: SubscriberCellModel) {

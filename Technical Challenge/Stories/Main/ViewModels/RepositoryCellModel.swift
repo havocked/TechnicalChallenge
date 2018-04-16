@@ -26,7 +26,7 @@ struct RepositoryCellModel {
         case 1:
             fork = "1 fork"
         default:
-            fork = "\(repository.forks) forks"
+            fork = "REPO_MULTI_FORKS".localize(args: repository.forks)
         }
         
         avatarURL = URL(string: repository.owner.avatarURL)

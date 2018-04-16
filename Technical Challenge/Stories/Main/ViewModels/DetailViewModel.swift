@@ -42,7 +42,10 @@ final class DetailViewModel {
     
     var totalSubscribers : String {
         get {
-            return "\(repository.totalWatchers)\nwatchers"
+            let str = "DETAIL_TOTAL_WATCHERS"
+                .localize(args: repository.totalWatchers)
+                .capitalized
+            return str
         }
     }
     

@@ -49,6 +49,15 @@ class MainViewController: UIViewController {
         registerKeyboardNotifications()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Animated the unselection of cell when detail view is popped
+        if let selectionIndexPath = self.resultTableView.indexPathForSelectedRow {
+            self.resultTableView.deselectRow(at: selectionIndexPath, animated: animated)
+        }
+    }
+    
     deinit {
         removeKeyboardNotifications()
     }

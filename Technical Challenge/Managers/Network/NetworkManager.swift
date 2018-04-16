@@ -11,8 +11,11 @@ import WebLinking
 
 // This protocol will allow to mock the network layer when unit test the project
 protocol NetworkRessource {
+   
     func fetchRepositories(url: URL, completionHandler: @escaping (PaginatedResponse<SearchResult<Repository>>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask
+    
     func fetchRepositories(search: String, sorted: RepoSortType, order: RepoOrderType, completionHandler: @escaping (PaginatedResponse<SearchResult<Repository>>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask
+    
     func fetchSubscribers(url: URL, completionHandler: @escaping (PaginatedResponse<[User]>) -> (), failureHandler: @escaping FailureHandler) -> URLSessionDataTask
 }
 
@@ -28,7 +31,7 @@ struct NetworkManager {
     
     @discardableResult
     public func callRequest<T: Codable>(request: URLRequest, withSuccess success: @escaping (PaginatedResponse<T>)->Void, andFailure failure: @escaping FailureHandler) -> URLSessionDataTask {
-        print("Start REQUEST")
+      
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: request) { (data, response, error) in

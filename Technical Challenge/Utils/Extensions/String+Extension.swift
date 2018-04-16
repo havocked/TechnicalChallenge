@@ -15,6 +15,10 @@ extension String {
         }
     }
     
+    func localize(args: CVarArg...) -> String {
+        return NSString(format: self.localized, arguments: getVaList(args)) as String
+    }
+    
     func trimWhitespaces() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
