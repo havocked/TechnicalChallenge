@@ -26,7 +26,7 @@ The architecture evolves around “Stories” where, in the future, whenever the
 
 A Story is composed of a Storyboard, ViewControllers, ViewModels and Views directories. This way, it is easy to navigate between classes that are linked inside a same story.
 
-[I'm a relative reference to a repository file](documentation/doc_stories.png)
+![GitHub Logo](documentation/doc_stories.png)
 
 When possible, MVVM is used.
 
