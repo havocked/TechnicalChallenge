@@ -27,6 +27,11 @@
 		83B092DC2083B41F005D4C2A /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092DB2083B41F005D4C2A /* SearchResult.swift */; };
 		83B092DE2083BC80005D4C2A /* SubscriberCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092DD2083BC80005D4C2A /* SubscriberCellModel.swift */; };
 		83B092E120849565005D4C2A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83B092E320849565005D4C2A /* Localizable.strings */; };
+		83B092E92084C1FF005D4C2A /* repository.json in Resources */ = {isa = PBXBuildFile; fileRef = 83B092E82084C1FF005D4C2A /* repository.json */; };
+		83B092EC2084C432005D4C2A /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092EB2084C432005D4C2A /* RepositoryTests.swift */; };
+		83B092ED2084C51F005D4C2A /* repository.json in Resources */ = {isa = PBXBuildFile; fileRef = 83B092E82084C1FF005D4C2A /* repository.json */; };
+		83B092F12084C5D0005D4C2A /* PaginatedResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092F02084C5D0005D4C2A /* PaginatedResponseTests.swift */; };
+		83B092F32084C779005D4C2A /* SearchResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B092F22084C779005D4C2A /* SearchResultTests.swift */; };
 		83C57E4720836F00000660F8 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 83C57E4620836F00000660F8 /* repositories.json */; };
 		83C57E4820836F1F000660F8 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 83C57E4620836F00000660F8 /* repositories.json */; };
 		83C57E4A208377CB000660F8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C57E49208377CB000660F8 /* DetailViewController.swift */; };
@@ -97,6 +102,10 @@
 		83B092E220849565005D4C2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		83B092E420849571005D4C2A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		83B092E520849576005D4C2A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		83B092E82084C1FF005D4C2A /* repository.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = repository.json; sourceTree = "<group>"; };
+		83B092EB2084C432005D4C2A /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
+		83B092F02084C5D0005D4C2A /* PaginatedResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedResponseTests.swift; sourceTree = "<group>"; };
+		83B092F22084C779005D4C2A /* SearchResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTests.swift; sourceTree = "<group>"; };
 		83C57E4620836F00000660F8 /* repositories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
 		83C57E49208377CB000660F8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83C57E4B2083786B000660F8 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -159,7 +168,9 @@
 		837ED5EC2082514800617A31 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
+				83AF233A207F94110043A898 /* Info.plist */,
 				83C57E4620836F00000660F8 /* repositories.json */,
+				83B092E82084C1FF005D4C2A /* repository.json */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -202,7 +213,9 @@
 			children = (
 				837ED5EC2082514800617A31 /* Ressources */,
 				83AF2338207F94110043A898 /* MainViewModelTests.swift */,
-				83AF233A207F94110043A898 /* Info.plist */,
+				83B092EB2084C432005D4C2A /* RepositoryTests.swift */,
+				83B092F02084C5D0005D4C2A /* PaginatedResponseTests.swift */,
+				83B092F22084C779005D4C2A /* SearchResultTests.swift */,
 			);
 			path = "Technical ChallengeTests";
 			sourceTree = "<group>";
@@ -507,6 +520,7 @@
 				83AF232B207F94110043A898 /* Assets.xcassets in Resources */,
 				83AF2329207F94100043A898 /* Main.storyboard in Resources */,
 				83C6A2822081303800B24679 /* LoadingCell.xib in Resources */,
+				83B092ED2084C51F005D4C2A /* repository.json in Resources */,
 				83C6A2732080EB9C00B24679 /* RepositoryCell.xib in Resources */,
 				83B092E120849565005D4C2A /* Localizable.strings in Resources */,
 				83C57E532083AA5F000660F8 /* SubscriberCell.xib in Resources */,
@@ -519,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83C57E4720836F00000660F8 /* repositories.json in Resources */,
+				83B092E92084C1FF005D4C2A /* repository.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +748,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				83AF2339207F94110043A898 /* MainViewModelTests.swift in Sources */,
+				83B092EC2084C432005D4C2A /* RepositoryTests.swift in Sources */,
+				83B092F32084C779005D4C2A /* SearchResultTests.swift in Sources */,
+				83B092F12084C5D0005D4C2A /* PaginatedResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,7 +977,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
-				INFOPLIST_FILE = "Technical ChallengeTests/Info.plist";
+				INFOPLIST_FILE = "Technical ChallengeTests/Ressources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -981,7 +999,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
-				INFOPLIST_FILE = "Technical ChallengeTests/Info.plist";
+				INFOPLIST_FILE = "Technical ChallengeTests/Ressources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1131,7 +1149,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K7WV5867K9;
-				INFOPLIST_FILE = "Technical ChallengeTests/Info.plist";
+				INFOPLIST_FILE = "Technical ChallengeTests/Ressources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

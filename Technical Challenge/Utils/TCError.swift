@@ -28,6 +28,15 @@ public enum TCError {
             return message
         }
     }
+    
+    var title : String {
+        switch self {
+        case .error:
+            return "ERROR_ALERT_TITLE".localized
+        case .message(let title, _):
+            return title
+        }
+    }
 }
 
 extension TCError : CustomStringConvertible {

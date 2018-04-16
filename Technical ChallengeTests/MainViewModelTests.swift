@@ -58,7 +58,7 @@ class MainViewModelTests: XCTestCase {
         
         XCTAssertEqual(model.title, "helloworld-infrastructure-production")
         XCTAssertEqual(model.description, "No description")
-        XCTAssertEqual(model.fork, "9 forks")
+        XCTAssertEqual(model.fork, "9 Forks")
         XCTAssertEqual(model.avatarURL?.absoluteString, "https://avatars2.githubusercontent.com/u/1123322?v=4")
     }
     
@@ -72,9 +72,9 @@ class MainViewModelTests: XCTestCase {
         let oneForkModel = viewModel.repositoryCellModel(at: oneForkIndexpath)
         let zeroForksModel = viewModel.repositoryCellModel(at: zeroForkIndepath)
         
-        XCTAssertEqual(multipleForksModel.fork, "9 forks")
-        XCTAssertEqual(oneForkModel.fork, "1 fork")
-        XCTAssertEqual(zeroForksModel.fork, "No forks")
+        XCTAssertEqual(multipleForksModel.fork, "9 Forks")
+        XCTAssertEqual(oneForkModel.fork, "1 Fork")
+        XCTAssertEqual(zeroForksModel.fork, "No Forks")
         
     }
     

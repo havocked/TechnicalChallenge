@@ -33,6 +33,10 @@ A Story is composed of a Storyboard, ViewControllers, ViewModels and Views direc
 
 When possible, MVVM is used.
 
+## Known issues
+
+Be aware that the project use the public API of Github. There is a limited number of requests. And so, an alert will eventually appear of the request limit error. 
+
 ## Cocoapods
 
 Two frameworks are used with Cocoapods:

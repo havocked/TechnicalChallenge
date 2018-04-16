@@ -40,6 +40,7 @@ class DetailViewController : UIViewController {
 
 extension DetailViewController : DetailViewModelDelegate {
     func detailViewModel(viewModel: DetailViewModel, didChange status: DetailStatus) {
+        
         switch status {
         case .idle:
             break
@@ -49,6 +50,7 @@ extension DetailViewController : DetailViewModelDelegate {
     }
     
     func detailViewModel(viewModel: DetailViewModel, didSend event: DetailEvent) {
+        
         switch event {
         case .update:
             self.subscriberCollectionView.reloadData()
@@ -57,6 +59,14 @@ extension DetailViewController : DetailViewModelDelegate {
                 self.subscriberCollectionView.insertItems(at: indexPaths)
             }, completion: nil)
         }
+    }
+    
+    func detailViewModel(viewModel: DetailViewModel, showError error: TCError) {
+        
+        let alert = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "ALERT_OK_ACTION_TITLE".localized, style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

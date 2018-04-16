@@ -10,6 +10,7 @@
 
 "MAIN_NAV_TITLE" = "Challenge Technique";
 "MAIN_SEARCH_BAR_PLACEHOLDER" = "Rechercher un repo";
+"ALERT_OK_ACTION_TITLE" = "Ok";
 
 // RepositoryCellModel
 
@@ -20,7 +21,7 @@
 
 // DetailViewModel
 
-"DETAIL_TOTAL_WATCHERS" = "%d inscrits";
+"DETAIL_TOTAL_WATCHERS" = "%d\ninscrits";
 
 // TCError
 

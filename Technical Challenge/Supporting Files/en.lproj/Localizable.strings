@@ -11,6 +11,7 @@
 
 "MAIN_NAV_TITLE" = "Technical Challenge";
 "MAIN_SEARCH_BAR_PLACEHOLDER" = "Search a repository";
+"ALERT_OK_ACTION_TITLE" = "Ok";
 
 // RepositoryCellModel
 
@@ -21,7 +22,7 @@
 
 // DetailViewModel
 
-"DETAIL_TOTAL_WATCHERS" = "%d watchers";
+"DETAIL_TOTAL_WATCHERS" = "%d\nwatchers";
 
 // TCError
 

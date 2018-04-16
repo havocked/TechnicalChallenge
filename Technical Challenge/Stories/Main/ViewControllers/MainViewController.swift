@@ -104,6 +104,7 @@ extension MainViewController : UISearchBarDelegate {
 
 extension MainViewController : MainViewModelDelegate {
     func mainViewModel(viewModel: MainViewModel, didSend event: MainEvent) {
+        
         switch event {
         case .update:
             self.resultTableView.reloadData()
@@ -116,6 +117,7 @@ extension MainViewController : MainViewModelDelegate {
     }
     
     func mainViewModel(viewModel: MainViewModel, didChange status: MainStatus) {
+        
         switch status {
         case .idle:
             self.activityIndicator.stopAnimating()
@@ -127,6 +129,14 @@ extension MainViewController : MainViewModelDelegate {
         default:
             return
         }
+    }
+    
+    func mainViewModel(viewModel: MainViewModel, showError error: TCError) {
+        
+        let alert = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "ALERT_OK_ACTION_TITLE".localized, style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

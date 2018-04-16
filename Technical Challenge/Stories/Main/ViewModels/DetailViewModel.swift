@@ -23,6 +23,7 @@ enum DetailStatus {
 protocol DetailViewModelDelegate: class {
     func detailViewModel(viewModel: DetailViewModel, didChange status: DetailStatus)
     func detailViewModel(viewModel: DetailViewModel, didSend event: DetailEvent)
+    func detailViewModel(viewModel: DetailViewModel, showError error: TCError)
 }
 
 final class DetailViewModel {
@@ -92,7 +93,7 @@ final class DetailViewModel {
             self.loadingStatus = .idle
             self.currentQuery = nil
         }, failureHandler: { error in
-            print(error.message)
+            self.delegate?.detailViewModel(viewModel: self, showError: error)
         })
     }
     

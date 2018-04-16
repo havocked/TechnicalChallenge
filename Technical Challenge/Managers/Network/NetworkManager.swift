@@ -41,9 +41,10 @@ struct NetworkManager {
                     failure(customError)
                 }
             } else {
-                let decoder = JSONDecoder()
+                
                 if let data = data, let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.isStatusOK {
+                        let decoder = JSONDecoder()
                         let decodedResult = try! decoder.decode(T.self, from: data)
                         let nextLink = httpResponse.findLink(relation: "next")
                         let previousLink = httpResponse.findLink(relation: "prev")

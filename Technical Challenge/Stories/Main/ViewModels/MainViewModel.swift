@@ -26,6 +26,7 @@ enum MainStatus {
 protocol MainViewModelDelegate: class {
     func mainViewModel(viewModel: MainViewModel, didChange status: MainStatus)
     func mainViewModel(viewModel: MainViewModel, didSend event: MainEvent)
+    func mainViewModel(viewModel: MainViewModel, showError error: TCError)
 }
 
 final class MainViewModel {
@@ -92,7 +93,7 @@ final class MainViewModel {
                     self.delegate?.mainViewModel(viewModel: self, didSend: .update)
                     self.loadingStatus = .idle
                 }, failureHandler: { error in
-                    print(error.message)
+                    self.delegate?.mainViewModel(viewModel: self, showError: error)
                     self.loadingStatus = .idle
                 })
             }
@@ -104,7 +105,7 @@ final class MainViewModel {
                 self.delegate?.mainViewModel(viewModel: self, didSend: .update)
                 self.loadingStatus = .idle
             }, failureHandler: { error in
-                print(error.message)
+                self.delegate?.mainViewModel(viewModel: self, showError: error)
                 self.loadingStatus = .idle
             })
         }
@@ -126,7 +127,7 @@ final class MainViewModel {
             self.delegate?.mainViewModel(viewModel: self, didSend: .update)
             self.loadingStatus = .idle
         }, failureHandler: { error in
-            print(error.message)
+            self.delegate?.mainViewModel(viewModel: self, showError: error)
             self.loadingStatus = .idle
         })
     }
