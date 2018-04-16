@@ -14,9 +14,12 @@ Cheers !
 
 ## Building the project
 
-This project use Cocoapods. Tap the following commands in the root directory 
+This project use [Cocoapods](https://cocoapods.org). Tap the following commands in the root directory 
 
-
+```
+$> sudo gem install cocoapods
+$> pod install
+```
 
 It will generate a file Technical Challenge.xcworkspace. Open the project with it (not with Technical Challenge.xcodeproj)
 
