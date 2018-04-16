@@ -21,7 +21,7 @@ $> sudo gem install cocoapods
 $> pod install
 ```
 
-It will generate a file Technical Challenge.xcworkspace. Open the project with it (not with Technical Challenge.xcodeproj)
+It will generate a file **Technical Challenge.xcworkspace**. Open the project with it (not with Technical Challenge.xcodeproj)
 
 ## Project Architecture
 
@@ -39,7 +39,7 @@ Two frameworks are used with Cocoapods:
 
 #### WebLinking
 
-This little pod provides usefull helpers methods to extract header links in a httpResponse 
+This little pod provides useful helpers methods to extract header links in a httpResponse 
 
 #### Kingfisher
 
