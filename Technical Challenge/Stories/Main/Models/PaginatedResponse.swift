@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A paginated response represents data with urls for previous and next pages
 struct PaginatedResponse<T : Codable> {
     var data : T
     

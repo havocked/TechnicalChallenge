@@ -6,3 +6,24 @@
   Copyright © 2018 Nataniel Martin. All rights reserved.
 */
 
+// MainViewController
+
+"MAIN_NAV_TITLE" = "Challenge Technique";
+"MAIN_SEARCH_BAR_PLACEHOLDER" = "Rechercher un repo";
+
+// RepositoryCellModel
+
+"REPO_NO_DESCRPTION" = "Pas de description";
+"REPO_NO_FORK" = "Pas de Fork";
+"REPO_ONE_FORK" = "1 Fork";
+"REPO_MULTI_FORKS" = "%d Forks";
+
+// DetailViewModel
+
+"DETAIL_TOTAL_WATCHERS" = "%d inscrits";
+
+// TCError
+
+"ERROR_ALERT_TITLE" = "Erreur";
+"ERROR_INTERNET" = "Verifier la connexion internet";
+"ERROR_UNKNOWN" = "Une erreur est survenue";

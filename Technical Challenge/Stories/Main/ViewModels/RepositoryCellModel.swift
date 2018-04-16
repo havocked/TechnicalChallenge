@@ -18,13 +18,13 @@ struct RepositoryCellModel {
     
     init(repository: Repository) {
         title = repository.name
-        description = repository.description ?? "No description"
+        description = repository.description ?? "REPO_NO_DESCRPTION".localized
         
         switch repository.forks {
         case 0:
-            fork = "No forks"
+            fork = "REPO_NO_FORK".localized
         case 1:
-            fork = "1 fork"
+            fork = "REPO_ONE_FORK".localized
         default:
             fork = "REPO_MULTI_FORKS".localize(args: repository.forks)
         }

@@ -14,7 +14,10 @@ class NavigationController : UINavigationController, UINavigationControllerDeleg
         self.delegate = self
     }
     
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+        // Removes the back title in the navigation bar
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
 }

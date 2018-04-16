@@ -15,9 +15,9 @@
 // RepositoryCellModel
 
 "REPO_NO_DESCRPTION" = "No description";
-"REPO_NO_FORK" = "No forks";
-"REPO_ONE_FORK" = "1 fork";
-"REPO_MULTI_FORKS" = "%d forks";
+"REPO_NO_FORK" = "No Forks";
+"REPO_ONE_FORK" = "1 Fork";
+"REPO_MULTI_FORKS" = "%d Forks";
 
 // DetailViewModel
 

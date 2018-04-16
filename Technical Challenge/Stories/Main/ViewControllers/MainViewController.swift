@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Technical Challenge"
+        self.title = "MAIN_NAV_TITLE".localized
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.stopAnimating()
@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         
         viewModel.delegate = self
         searchBar.delegate = self
-        searchBar.placeholder = "Search a repository"
+        searchBar.placeholder = "MAIN_SEARCH_BAR_PLACEHOLDER".localized
         
         resultTableView.delegate = self
         resultTableView.dataSource = self
@@ -92,11 +92,15 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: UISearchBar Delegates
+
 extension MainViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.userDidTap(searchText)
     }
 }
+
+// MARK: MainViewModel Delegates
 
 extension MainViewController : MainViewModelDelegate {
     func mainViewModel(viewModel: MainViewModel, didSend event: MainEvent) {
@@ -125,6 +129,8 @@ extension MainViewController : MainViewModelDelegate {
         }
     }
 }
+
+// MARK: UITableView Delegates / Datasources
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

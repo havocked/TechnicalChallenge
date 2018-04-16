@@ -36,6 +36,8 @@ class DetailViewController : UIViewController {
     }
 }
 
+// MARK: DetailViewModel Delegates
+
 extension DetailViewController : DetailViewModelDelegate {
     func detailViewModel(viewModel: DetailViewModel, didChange status: DetailStatus) {
         switch status {
@@ -101,9 +103,6 @@ extension DetailViewController : UICollectionViewDelegateFlowLayout {
         static let collectionViewPaddingBottom: CGFloat = 5
     }
     
-    // Whenever the colectionView refreshes, this delegate will recalculate
-    // cell size in order to always have number of cell == range value
-    // horizontally and vertically
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let range : CGFloat = 4

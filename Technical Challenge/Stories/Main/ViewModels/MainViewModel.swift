@@ -9,11 +9,13 @@
 import Foundation
 
 
+/// Events sended by the view model to viewController
 enum MainEvent {
     case update
     case insert(indexPaths: [IndexPath])
 }
 
+/// Loading status in the MainViewModel
 enum MainStatus {
     case idle
     case refreshing
@@ -28,12 +30,16 @@ protocol MainViewModelDelegate: class {
 
 final class MainViewModel {
     
+    // MARK: Private Variables
+    
     private var searchTask : DispatchWorkItem?
     private var currentQuery: URLSessionDataTask?
     private var lastResponse: PaginatedResponse<SearchResult<Repository>>?
     private var networkManager : NetworkRessource
-    
     private var loadedRepositories = [Repository]()
+    
+    // MARK: Public Variables
+    
     public private(set) var loadingStatus : MainStatus = .idle {
         didSet {
             self.delegate?.mainViewModel(viewModel: self, didChange: loadingStatus)
@@ -42,18 +48,21 @@ final class MainViewModel {
     
     public weak var delegate : MainViewModelDelegate?
     
-    var totalRepositories : Int {
+    public var totalRepositories : Int {
         get {
             return loadedRepositories.count
         }
     }
     
+    // MARK: View model Methods
+    
     init(networkRessource: NetworkRessource = NetworkManager()) {
-//        // Use Mock response when UI testing
-//        if let _ = ProcessInfo.processInfo.environment["-ShouldMockResponse"] {
-//            networkManager = NetworkMockTest()
-//        }
-        networkManager = networkRessource
+        // Use Mock response when UI testing
+        if let _ = ProcessInfo.processInfo.environment["-ShouldMockResponse"] {
+            networkManager = NetworkMockTest()
+        } else {
+            networkManager = networkRessource
+        }
     }
     
     func verifySearchText(str: String?) -> String? {

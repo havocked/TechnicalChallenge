@@ -8,11 +8,13 @@
 
 import Foundation
 
+/// Events sended by the view model to viewController
 enum DetailEvent {
     case update
     case insert(indexPaths: [IndexPath])
 }
 
+/// Loading status in the DetailViewModel
 enum DetailStatus {
     case idle
     case fetchingNextPage
@@ -25,12 +27,15 @@ protocol DetailViewModelDelegate: class {
 
 final class DetailViewModel {
     
+    // MARK: Private Variables
+    
     private var repository: Repository
     private var networkManager : NetworkRessource
-    
     private var currentQuery: URLSessionDataTask?
     private var lastResponse: PaginatedResponse<[User]>?
     private var loadedUsersList = [User]()
+    
+    // MARK: Public Variables
     
     public weak var delegate : DetailViewModelDelegate?
     
@@ -60,6 +65,8 @@ final class DetailViewModel {
             return repository.name
         }
     }
+    
+    // MARK: View model Methods
     
     init(repository: Repository, networkRessource: NetworkRessource = NetworkManager()) {
         self.repository = repository

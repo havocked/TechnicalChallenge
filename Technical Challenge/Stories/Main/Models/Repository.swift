@@ -6,8 +6,6 @@
 //  Copyright © 2018 Nataniel Martin. All rights reserved.
 //
 
-//https://developer.github.com/v3/repos/#list-all-public-repositories
-
 import Foundation
 
 struct Repository : Codable {
