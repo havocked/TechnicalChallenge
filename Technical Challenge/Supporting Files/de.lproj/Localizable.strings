@@ -8,23 +8,23 @@
 
 // MainViewController
 
-"MAIN_NAV_TITLE" = "Technical Challenge";
-"MAIN_SEARCH_BAR_PLACEHOLDER" = "Search a repository";
+"MAIN_NAV_TITLE" = "Technische Herausforderung";
+"MAIN_SEARCH_BAR_PLACEHOLDER" = "Suche ein Repository";
 "ALERT_OK_ACTION_TITLE" = "Ok";
 
 // RepositoryCellModel
 
-"REPO_NO_DESCRPTION" = "No description";
-"REPO_NO_FORK" = "No Forks";
+"REPO_NO_DESCRPTION" = "Keine Beschreibung";
+"REPO_NO_FORK" = "Keine Forks";
 "REPO_ONE_FORK" = "1 Fork";
 "REPO_MULTI_FORKS" = "%d Forks";
 
 // DetailViewModel
 
-"DETAIL_TOTAL_WATCHERS" = "%d\nwatchers";
+"DETAIL_TOTAL_WATCHERS" = "%d\nAbonnenten";
 
 // TCError
 
 "ERROR_ALERT_TITLE" = "Error";
-"ERROR_INTERNET" = "Check your internet connection";
-"ERROR_UNKNOWN" = "An error has occured";
+"ERROR_INTERNET" = "Prüfe deine Internetverbindung";
+"ERROR_UNKNOWN" = "Ein Fehler ist aufgetreten";
