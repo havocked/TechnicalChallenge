@@ -26,18 +26,20 @@ The architecture evolves around “Stories” where, in the future, whenever the
 
 A Story is composed of a Storyboard, ViewControllers, ViewModels and Views directories. This way, it is easy to navigate between classes that are linked inside a same story.
 
+[I'm a relative reference to a repository file](documentation/doc_stories.png)
+
 When possible, MVVM is used.
 
 ## Cocoapods
 
 Two frameworks are used with Cocoapods:
 
-WebLinking
-======
+#### WebLinking
+
 This little pod provides usefull helpers methods to extract header links in a httpResponse 
 
-Kingfisher
-======
+#### Kingfisher
+
 Really good pod to handle loading and caching of images from urls.
 
 ## Testing
