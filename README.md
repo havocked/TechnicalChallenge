@@ -1,4 +1,4 @@
-**Technical Challenge**
+# Technical Challenge
 
 Hi, fellow Reviewer,
 
@@ -6,7 +6,7 @@ This document will help you build the project and walk you through into some of 
 
 Cheers !
 
-**Requirements**
+##Requirements
 
 - Xcode 9.2+ 
 - iOS 10.0+ 
@@ -41,6 +41,7 @@ Kingfisher
 Really good pod to handle loading and caching of images from urls.
 
 **Testing**
+
 To test different parts of the project, I use the Xcode test framework.
 
 
